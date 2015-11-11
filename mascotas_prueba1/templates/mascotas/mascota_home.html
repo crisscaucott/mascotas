@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mascotas</title>
+</head>
+<body>
+	<ul>
+		<table>
+			<tr>
+				<th>#ID</th>
+				<th>Nombre</th>
+				<th>Fecha creacion</th>
+				<th>Raza</th>
+				<th>Color</th>
+				<th>Sexo</th>
+				<th>Usuario</th>
+			</tr>
+			{% for e in mascota_list %}
+				<tr>
+					<td>{{e.id}}</td>
+					<td>{{e.nombre}}</td>
+					<td>{{e.fecha_creacion}}</td>
+					<td>{{e.raza}}</td>
+					<td>{{e.color}}</td>
+					<td>{{e.sexo}}</td>
+					<td>{{e.usuario}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</ul>
+</body>
+</html>
