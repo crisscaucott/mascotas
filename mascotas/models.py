@@ -13,6 +13,7 @@ class Usuario(models.Model):
 class Mascota(models.Model):
 	nombre = models.CharField(max_length = 30)
 	fecha_creacion = models.DateTimeField(auto_now_add = True)
+	animal = models.CharField(max_length = 30)
 	raza = models.CharField(max_length = 20)
 	color = models.CharField(max_length = 20)
 	sexo = models.CharField(max_length = 15)
@@ -50,7 +51,7 @@ class FotosMascota(models.Model):
 		db_table = 'fotos_mascota'
 
 	def __unicode__(self):
-		return self.mascota
+		return self.mascota.nombre
 
 class MascotaCazaRecompensa(models.Model):
 	usuario = models.ForeignKey(Usuario)
@@ -60,7 +61,7 @@ class MascotaCazaRecompensa(models.Model):
 		db_table = 'mascota_cazarecompensa'
 
 	def __unicode__(self):
-		return self.usuario
+		return self.usuario.nombre
 
 class FotosCazaRecompensas(models.Model):
 	mascota_caza = models.ForeignKey(MascotaCazaRecompensa)
@@ -70,4 +71,4 @@ class FotosCazaRecompensas(models.Model):
 		db_table = 'fotos_cazarecompensa'
 
 	def __unicode__(self):
-		return self.mascota_caza
+		return self.imagen
