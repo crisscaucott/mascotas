@@ -11,7 +11,7 @@ class MascotaListView(ListView):
 	# Devuelve los datos de la tabla MascotasPerdidas
 	def get_context_data(self, **kwargs):
 	    context = super(MascotaListView, self).get_context_data(**kwargs)
-	    context['m_perdidas'] = MascotasPerdidas.objects.select_related().all()
+	    context['m_perdidas'] = MascotasPerdidas.objects.filter(fecha_encontrado = None).select_related().all()
 	    return context;
 
 
