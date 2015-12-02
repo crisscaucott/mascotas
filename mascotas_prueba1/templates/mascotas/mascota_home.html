@@ -6,11 +6,13 @@
 </head>
 <body>
 	<ul>
+		<h3>Mascotas</h3>
 		<table>
 			<tr>
 				<th>#ID</th>
 				<th>Nombre</th>
 				<th>Fecha creacion</th>
+				<th>Animal</th>
 				<th>Raza</th>
 				<th>Color</th>
 				<th>Sexo</th>
@@ -21,6 +23,7 @@
 					<td>{{e.id}}</td>
 					<td>{{e.nombre}}</td>
 					<td>{{e.fecha_creacion}}</td>
+					<td>{{e.animal}}</td>
 					<td>{{e.raza}}</td>
 					<td>{{e.color}}</td>
 					<td>{{e.sexo}}</td>
@@ -28,6 +31,44 @@
 				</tr>
 			{% endfor %}
 		</table>
+
+		<h3>Mascotas Perdidas</h3>
+		<table>
+			<tr>
+				<th>#ID</th>
+				<th>Fecha Perdido</th>
+				<th>Fecha Encontrado</th>
+				<th>Direccion Perdido</th>
+				<th>Direccion Encontrado</th>
+				<th>Recompensa</th>
+				<th>Info Adicional</th>
+				<th>Nombre</th>
+				<th>Animal</th>
+				<th>Raza</th>
+				<th>Color</th>
+				<th>Sexo</th>
+				<th>Usuario</th>
+			</tr>
+			{% for m in m_perdidas %}
+				<tr>
+					<td>{{m.id}}</td>
+					<td>{{m.fecha_perdido}}</td>
+					<td>{{m.fecha_encontrado}}</td>
+					<td>{{m.dir_perdido}}</td>
+					<td>{{m.dir_encontrado}}</td>
+					<td>{{m.recompensa}}</td>
+					<td>{{m.info_adicional}}</td>
+					<td>{{m.mascota.nombre}}</td>
+					<td>{{m.mascota.animal}}</td>
+					<td>{{m.mascota.raza}}</td>
+					<td>{{m.mascota.color}}</td>
+					<td>{{m.mascota.sexo}}</td>
+					<td>{{m.mascota.usuario}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+
+
 	</ul>
 </body>
 </html>

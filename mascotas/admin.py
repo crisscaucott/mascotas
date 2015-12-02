@@ -4,7 +4,7 @@ from .models import Mascota,MascotasPerdidas,FotosMascota,Usuario,MascotaCazaRec
 # Register your models here.
 @admin.register(Mascota)
 class MascotaAdmin(admin.ModelAdmin):
-	list_display = ['nombre', 'fecha_creacion', 'raza', 'color', 'sexo', 'usuario']
+	list_display = ['nombre', 'fecha_creacion', 'raza', 'color', 'sexo', 'usuario', 'animal']
 
 @admin.register(MascotasPerdidas)
 class MascotaPerdidasAdmin(admin.ModelAdmin):

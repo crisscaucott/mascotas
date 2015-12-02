@@ -11,7 +11,6 @@ class Usuario(models.Model):
 	def __unicode__(self):
 		return self.nombre
 
-# Tabla de mascotas
 class Mascota(models.Model):
 	nombre = models.CharField(max_length = 30)
 	fecha_creacion = models.DateTimeField(auto_now_add = True)
@@ -44,7 +43,7 @@ class MascotasPerdidas(models.Model):
 		db_table = 'mascotas_perdidas'
 
 	def __unicode__(self):
-		return self.mascota.nombre
+		return self.mascota.raza
 
 # Fotos de cada mascota.
 class FotosMascota(models.Model):
