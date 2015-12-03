@@ -8,7 +8,7 @@
 	<h3>Confirmar borrado de imagen '{{object.imagen}}' de usuario: {{object.mascota_caza}}</h3>
 	<form method="POST">
 		{% csrf_token %}
-		{# crea todo el form #}
+
 		<a href="{% url 'caza_recompensas' %}">Volver</a>
 		<input type="submit" value="Borrar">
 		

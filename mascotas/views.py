@@ -17,8 +17,6 @@ class MascotaListView(ListView):
 	    context['m_perdidas_todas'] = MascotasPerdidas.objects.filter().select_related().all()
 
 	    # Item 2, mascotas encontradas que ya hayan sido perdidas
-	    # item2_ids = MascotasPerdidas.objects.values_list('mascota_id', flat = True).annotate(ids_mascotas=Count('mascota_id')).filter(ids_mascotas__gt = 1)
-	    # print item2_ids
 	    context['item2'] = MascotasPerdidas.objects.raw("""select *
 				from mascotas_perdidas as mp, mascota as m
 				where mp.mascota_id in (select mascota_id
