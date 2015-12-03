@@ -67,7 +67,9 @@ caza_recompensas = MascotaCazaRecompensaListView.as_view()
 def caza_recompensas_borrar(request, pk, template_name = 'mascotas/caza_recompensas_borrar.html'):
 	fotosCazaRecompensas = get_object_or_404(FotosCazaRecompensas, pk=pk)
 	if request.method == 'POST':
-		# SOFT DELETE
+		# HARD DELETE (borra el registro por completo)
+		# fotosCazaRecompensas.delete()
+		# SOFT DELETE (borrado logido del registro)
 		fotosCazaRecompensas.deleted_at = True
 		fotosCazaRecompensas.save()
 		return redirect('caza_recompensas')
