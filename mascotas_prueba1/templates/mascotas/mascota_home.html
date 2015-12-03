@@ -7,6 +7,7 @@
 <body>
 	<ul>
 		<h3>Mascotas</h3>
+		<a href="{% url 'caza_recompensas' %}">Ir a caza-recompensas (Item 4)</a>
 		<table>
 			<tr>
 				<th>#ID</th>
@@ -32,7 +33,7 @@
 			{% endfor %}
 		</table>
 
-		<h3>Mascotas Perdidas (no encontradas)</h3>
+		<h3>Mascotas Perdidas (todas)</h3>
 		<table>
 			<tr>
 				<th>#ID</th>
@@ -48,6 +49,45 @@
 				<th>Color</th>
 				<th>Sexo</th>
 				<th>Usuario</th>
+				<th>Caza-Recompensas</th>
+			</tr>
+			{% for m in m_perdidas_todas %}
+				<tr>
+					<td>{{m.id}}</td>
+					<td>{{m.fecha_perdido}}</td>
+					<td>{{m.fecha_encontrado}}</td>
+					<td>{{m.dir_perdido}}</td>
+					<td>{{m.dir_encontrado}}</td>
+					<td>{{m.recompensa}}</td>
+					<td>{{m.info_adicional}}</td>
+					<td>{{m.mascota.nombre}}</td>
+					<td>{{m.mascota.animal}}</td>
+					<td>{{m.mascota.raza}}</td>
+					<td>{{m.mascota.color}}</td>
+					<td>{{m.mascota.sexo}}</td>
+					<td>{{m.mascota.usuario}}</td>
+					<td>{{m.caza_recompensa}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+
+		<h3>Mascotas Perdidas (no encontradas) ITEM 1 Y 3</h3>
+		<table>
+			<tr>
+				<th>#ID</th>
+				<th>Fecha Perdido</th>
+				<th>Fecha Encontrado</th>
+				<th>Direccion Perdido</th>
+				<th>Direccion Encontrado</th>
+				<th>Recompensa</th>
+				<th>Info Adicional</th>
+				<th>Nombre</th>
+				<th>Animal</th>
+				<th>Raza</th>
+				<th>Color</th>
+				<th>Sexo</th>
+				<th>Usuario</th>
+				<th>Caza-Recompensas</th>
 			</tr>
 			{% for m in m_perdidas %}
 				<tr>
@@ -64,6 +104,11 @@
 					<td>{{m.mascota.color}}</td>
 					<td>{{m.mascota.sexo}}</td>
 					<td>{{m.mascota.usuario}}</td>
+					{% if m.caza_recompensa != None %}
+						<td><a href="{% url 'p_mascota_editar' pk=m.pk %}">{{m.caza_recompensa}}</a></td>
+					{% else %}
+						<td>{{m.caza_recompensa}}</td>
+					{% endif %}
 				</tr>
 			{% endfor %}
 		</table>

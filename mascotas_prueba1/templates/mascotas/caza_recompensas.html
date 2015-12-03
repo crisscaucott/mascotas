@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Caza Recompensas</title>
+</head>
+<body>
+	<h3>Imagenes Caza Recompensas</h3>
+	<table>
+		<tr>
+			<th>Caza Recompensa</th>
+			<th>Imagen</th>
+			<th>Accion</th>
+		</tr>
+		{% for c in mascota_caza %}
+			<tr>
+				<td>{{ c.mascota_caza }}</td>
+				<td><img src="{{ c.imagen }}" alt=""></td>
+				<td><a href="{% url 'caza_recompensas_borrar' pk=c.pk %}">Borrar</a></td>
+			</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>

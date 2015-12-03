@@ -27,6 +27,18 @@ class Mascota(models.Model):
 	def __unicode__(self):
 		return self.nombre
 
+
+# Un usuario que es caza_recompensa que subira las imagenes de la mascota para hacer el matching de las imagenes.
+class MascotaCazaRecompensa(models.Model):
+	usuario = models.ForeignKey(Usuario)
+	# mascota_perdida = models.ForeignKey(MascotasPerdidas, blank = True, null = True)
+
+	class Meta:
+		db_table = 'mascota_cazarecompensa'
+
+	def __unicode__(self):
+		return self.usuario.nombre
+
 # Aqui se registra cada mascota perdida, indicando su fecha de extravio.
 class MascotasPerdidas(models.Model):
 	mascota = models.ForeignKey(Mascota)
@@ -38,6 +50,8 @@ class MascotasPerdidas(models.Model):
 	dir_encontrado = models.CharField(max_length = 60, blank = True, null = True)
 	recompensa = models.CharField(max_length = 20, blank=True, null = True)
 	info_adicional = models.TextField()
+	# id del caza_recompensa que publico la mascota perdida.
+	caza_recompensa = models.ForeignKey(MascotaCazaRecompensa, null = True)
 
 	class Meta:
 		db_table = 'mascotas_perdidas'
@@ -49,6 +63,7 @@ class MascotasPerdidas(models.Model):
 class FotosMascota(models.Model):
 	mascota = models.ForeignKey(Mascota)
 	imagen = models.CharField(max_length = 200)
+	deleted_at = models.BooleanField(default = False)
 
 	class Meta:
 		db_table = 'fotos_mascota'
@@ -56,21 +71,12 @@ class FotosMascota(models.Model):
 	def __unicode__(self):
 		return self.mascota.nombre
 
-# Un usuario que es caza_recompensa que subira las imagenes de la mascota para hacer el matching de las imagenes.
-class MascotaCazaRecompensa(models.Model):
-	usuario = models.ForeignKey(Usuario)
-	mascota_perdida = models.ForeignKey(MascotasPerdidas, blank = True, null = True)
-
-	class Meta:
-		db_table = 'mascota_cazarecompensa'
-
-	def __unicode__(self):
-		return self.usuario.nombre
 
 # Fotos subidas por los caza_recompensas.
 class FotosCazaRecompensas(models.Model):
 	mascota_caza = models.ForeignKey(MascotaCazaRecompensa)
 	imagen = models.CharField(max_length = 200)
+	deleted_at = models.BooleanField(default = False)
 
 	class Meta:
 		db_table = 'fotos_cazarecompensa'

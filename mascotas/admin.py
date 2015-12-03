@@ -20,7 +20,7 @@ class UsuarioAdmin(admin.ModelAdmin):
 
 @admin.register(MascotaCazaRecompensa)
 class MascotaCazaRecompensaAdmin(admin.ModelAdmin):
-	list_display = ['usuario', 'mascota_perdida']
+	list_display = ['usuario']
 
 @admin.register(FotosCazaRecompensas)
 class FotosCazaRecompensasAdmin(admin.ModelAdmin):
